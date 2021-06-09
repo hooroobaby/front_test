@@ -10,7 +10,8 @@ const routes: Routes = [
   {
     path: 'folder/:id',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
-  },  {
+  },
+  {
     path: 'dimdian',
     loadChildren: () => import('./dimdian/dimdian.module').then( m => m.DimdianPageModule)
   },
@@ -18,14 +19,7 @@ const routes: Routes = [
     path: 'time',
     loadChildren: () => import('./time/time.module').then( m => m.TimePageModule)
   },
-  {
-    path: 'trial',
-    loadChildren: () => import('./trial/trial.module').then( m => m.TrialPageModule)
-  },
-  {
-    path: 'trial',
-    loadChildren: () => import('./trial/trial.module').then( m => m.TrialPageModule)
-  }
+
 
 ];
 

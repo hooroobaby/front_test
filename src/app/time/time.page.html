@@ -51,28 +51,31 @@
           <div  style="position: absolute;bottom:20%; left: 10px; " >
             <ion-icon name="time-outline" style="width: 28px; height: 28px; color:#0D7FDB"></ion-icon> 
           </div>
-          <swiper #newSwiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange($event)" style=" height: 20%; position: absolute; bottom:0%; ">
+          <div  style="position: absolute; bottom:15%; left: 40%; width: auto;  display: inline; vertical-align: inherit;">
+            <ion-chip color="primary" style="width: auto;  color: #0D7FDB;">星期日</ion-chip>
+          </div> 
+          <swiper #newSwiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange($event)" style=" height: 15%; position: absolute; bottom:0%; ">
             <!-- <div ng-reflect-ng-class="swiper-wrapper " id="momo" class="swiper-wrapper" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);"> -->
               
-              <div slot="wrapper-start" style="width: auto; height: 60px; display: inline; vertical-align: inherit;">
+              <!-- <div slot="wrapper-start" style="width: auto; height: 60px; display: inline; vertical-align: inherit;">
                 <ion-chip color="primary" style="width: 18%;height: 20px; left: 40%;  color: #0D7FDB;">星期日</ion-chip>
-              </div> 
+              </div>  -->
               <div slot="wrapper-end">
-                <ion-icon class="icon1" name="remove-outline"></ion-icon>
-                <ion-icon class="icon2" name="remove-outline"></ion-icon>
-                <ion-icon class="icon3" name="remove-outline"></ion-icon>
-                <ion-icon class="icon4" name="remove-outline"></ion-icon>
-                <ion-icon class="icon5" name="remove-outline"></ion-icon>
-                <ion-icon class="icon6" name="remove-outline"></ion-icon>
-                <ion-icon class="icon7" name="remove-outline"></ion-icon>
+                <ion-icon class="icon" id="icon1" name="remove-outline"></ion-icon>
+                <ion-icon class="icon" id="icon2" name="remove-outline"></ion-icon>
+                <ion-icon class="icon" id="icon3" name="remove-outline"></ion-icon>
+                <ion-icon class="icon" id="icon4" name="remove-outline"></ion-icon>
+                <ion-icon class="icon" id="icon5" name="remove-outline"></ion-icon>
+                <ion-icon class="icon" id="icon6" name="remove-outline"></ion-icon>
+                <ion-icon class="icon" id="icon7" name="remove-outline"></ion-icon>
 
-                <ion-text class="font1"> 3/18 </ion-text>
-                <ion-text class="font2"> 3/19 </ion-text>
-                <ion-text class="font3"> 3/20 </ion-text>
-                <ion-text class="font4"> 3/21 </ion-text>
-                <ion-text class="font5"> 3/22 </ion-text>
-                <ion-text class="font6"> 3/23 </ion-text>
-                <ion-text class="font7"> 3/24 </ion-text>
+                <ion-text class="font" id="font1"> 3/18 </ion-text>
+                <ion-text class="font" id="font2"> 3/19 </ion-text>
+                <ion-text class="font" id="font3"> 3/20 </ion-text>
+                <ion-text class="font" id="font4"> 3/21 </ion-text>
+                <ion-text class="font" id="font5"> 3/22 </ion-text>
+                <ion-text class="font" id="font6"> 3/23 </ion-text>
+                <ion-text class="font" id="font7"> 3/24 </ion-text>
               </div>
           </swiper> 
           
