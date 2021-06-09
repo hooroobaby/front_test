@@ -1,0 +1,160 @@
+<ion-header>
+
+  <style>
+    .ion-button{
+      color: #0D7FDB;
+    }
+
+    .d0{
+      padding: 20px; 
+      padding-left: 5%;
+      padding-right: 5%;
+      text-align: center;
+      margin: 15px;
+      border-width: 4px; 
+      border-style: solid; 
+      border-color: #0D7FDB;
+      border-radius: 20px;
+      text-align: center;
+      width: 90%;
+    }
+
+    .d1{
+      position:relative;
+      bottom:0%;
+      text-align:center;
+      margin: 30px; 
+      border: 5px;
+    }
+
+    .rate{
+      color: black;
+      font-size: larger; 
+      padding-left: 10%;
+    }
+
+    .date{
+      color: gray; 
+      font-size: small; 
+      padding-left: 10%;
+    }
+
+    .output{
+      color: #0D7FDB;
+      padding-left: 30%;
+      font-size: 65px;
+    }
+    
+    .fab[mini] {
+      margin: 8px;
+      width: 50px;
+      height: 50px;
+      color: #0D7FDB;
+    }
+  </style>
+
+  <ion-toolbar>
+    <ion-title>dimdian</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="d0" >
+      <ion-text color="dark" style="font-size: 40px;">
+        <strong>中央大學</strong>
+      </ion-text><br>
+      <ion-text color="dark" style="font-size: 20px;">
+        <strong>桃園市中壢區中大路300號</strong></ion-text>
+    </div>
+  
+  <div>
+    <div>
+      <ion-text class="rate"><strong>暴力案件發生率</strong></ion-text><br>
+      <!-- 到時候看使用者輸入什麼日期 若沒有指定則預設當天 -->
+      <ion-text class="date">2021.3.17</ion-text>
+    </div>
+    <div>
+      <!-- 到時候回傳的機率 -->
+      <ion-grid>
+        <ion-row>
+          <ion-col size="10">
+            <ion-text class="output">40.0</ion-text>
+            <ion-text style="color: gray;font-size: 35px;"> %</ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button fill="clear" size="smaller" (click)=openIMG()>
+              <ion-icon name="chevron-down-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div>
+      <!-- 到時候圖片要怎麼生成？ -->
+      <img src="http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/207da8676e1927fadf1ee3b14603c088.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100,g_se,x_0,y_0" 
+                 id="oImg" width="90%" hight="160px"  style="display:none; padding-left: 15%;" >
+    </div>
+  </div>
+  <br>
+  <div>
+    <div>
+      <ion-text class="rate"><strong>車禍事故發生率</strong></ion-text><br>
+      <ion-text class="date">2021.3.17</ion-text>
+    </div>
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="10">
+            <ion-text class="output">53.5</ion-text>
+            <ion-text style="color: gray;font-size: 35px;"> %</ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button fill="clear" size="smaller" (click)=open2IMG() style="padding-top: 20px;">
+              <ion-icon name="chevron-down-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div>
+      <img src="http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/207da8676e1927fadf1ee3b14603c088.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100,g_se,x_0,y_0" 
+                 id="oImg2" width="90%" hight="160px"  style="display:none; padding-left: 15%;" >
+    </div>
+  </div>
+
+  <div style="text-align: center; margin: 20px; width: 90%;">
+    <!-- 如果有危險：顯示 -->
+    <ion-chip color="primary" style="width: 90%;height: 48px;">
+      <ion-avatar >
+        <ion-icon name="alert-circle-outline" style="width: 24px;height: 24px;"></ion-icon>
+      </ion-avatar>
+      <!-- 若車禍或暴力案件有超過一定機率時顯示 -->
+      <ion-label  class=".ion-button" color="primary" >此地點車禍機率高</ion-label>
+
+    </ion-chip>
+  </div>
+  
+  
+
+  <div class="d1" >
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" size-lg>
+          <ion-button class="ion-button"  href="#" shape="round" style="padding-left: 6%;">
+            <ion-icon name="chatbox-outline" style="color: #C3E4FA; width: 24px; height: 48px; "></ion-icon>
+            <p style="color:#C3E4FA; padding-left:8px;"><strong>回報事故</strong></p>
+          </ion-button>
+        </ion-col>
+        <ion-col size="6" size-lg>
+          <ion-button class="ion-button" href="#" shape="round" style="padding-right: 6%;">
+            <ion-icon name="attach-outline" style="color: #C3E4FA; width: 30px; height: 48px; "></ion-icon>
+            <p style="color:#C3E4FA; padding-left: 5px;"><strong>記住地點</strong></p>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+
+</ion-content>
