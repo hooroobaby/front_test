@@ -64,7 +64,7 @@
       <ion-text color="dark" style="font-size: 40px;">
         <strong>中央大學</strong>
       </ion-text><br>
-      <ion-text color="dark" style="font-size: 20px;">
+      <ion-text id="address" color="dark" style="font-size: 20px;">
         <strong>桃園市中壢區中大路300號</strong></ion-text>
     </div>
   
@@ -147,7 +147,7 @@
           </ion-button>
         </ion-col>
         <ion-col size="6" size-lg>
-          <ion-button class="ion-button" href="#" shape="round" style="padding-right: 6%;">
+          <ion-button class="ion-button" (click)=label() shape="round" style="padding-right: 6%;">
             <ion-icon name="attach-outline" style="color: #C3E4FA; width: 30px; height: 48px; "></ion-icon>
             <p style="color:#C3E4FA; padding-left: 5px;"><strong>記住地點</strong></p>
           </ion-button>
