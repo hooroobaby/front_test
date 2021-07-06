@@ -1,27 +1,45 @@
 <ion-app>
+  <ion-header>
+    <ion-toolbar>
+      <!-- <ion-title>menu</ion-title> -->
+      <ion-buttons slot="start">  
+        <ion-menu-button color="#0D7FDB">
+          <ion-icon name="ellipsis-horizontal-sharp" style="color: #C3E4FA;"></ion-icon>
+        </ion-menu-button>   
+      </ion-buttons>  
+    </ion-toolbar>  
+  </ion-header>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu contentId="main-content" type="overlay" style="--width: 150px;">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Inbox</ion-list-header>
-          <ion-note>hi@ionicframework.com</ion-note>
-
+          <!-- <ion-list-header>Inbox</ion-list-header>
+          <ion-note>hi@ionicframework.com</ion-note> -->
+          <p> </p><br>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
-              <ion-label>{{ p.title }}</ion-label>
+              <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
+              <!-- <ion-label>{{ p.title }}</ion-label> -->
+              <ion-button class="ion-button" color="#C3E4FA" href="#"  style="vertical-align: auto; background-color:#C3E4FA; border-radius:35px; width:110px; height:110px;">
+                <!-- <ion-icon name="location-outline"></ion-icon> -->
+                <div>
+                  <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-outline'" style="position:absolute; top: 15px; left: 3px; color:#0D7FDB; border-radius:35px; width: 45px;; height:45px;"></ion-icon>
+                </div>
+                
+                <ion-text style="color:#0D7FDB;; font-size:20px; position:absolute; bottom: 20px; left: 8px;"><strong><br><br><br><br>{{ p.title }}</strong></ion-text>
+              </ion-button>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
 
-        <ion-list id="labels-list">
+        <!-- <ion-list id="labels-list">
           <ion-list-header>Labels</ion-list-header>
 
           <ion-item *ngFor="let label of labels" lines="none">
             <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
             <ion-label>{{ label }}</ion-label>
           </ion-item>
-        </ion-list>
+        </ion-list> -->
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>menu</ion-title> -->
+    <ion-buttons slot="start">  
+      <ion-menu-button color="#0D7FDB">
+        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-menu-button>   
+    </ion-buttons>  
+  </ion-toolbar>
+  <style>
+    .my-custom-menu {
+       --width: 150px;
+    }
+    .ion-button {
+      display:inline-block;   
+      vertical-align:middle;
+      background-color:#C3E4FA; 
+      border-radius:35px; 
+      width:100px; 
+      height:110px;
+    }
+    .icon{
+      text-align: center; 
+      color:#0D7FDB; 
+      width:70px; 
+      height:70px;
+    }
+    .item-text-wrap{
+      color:#0D7FDB; 
+      font-size:20px;
+    }
+    .button-inner{
+      flex-flow: column;
+      white-space: pre-line;
+    }
+  </style>
+</ion-header>
+<ion-split-pane contentId="main-content">
+  <ion-menu-toggle side="start" menuId="custom" contentId="main" class="my-custom-menu" type="overlay">
+    <!-- <ion-header>
+      <ion-toolbar color="tertiary">
+        <ion-title>Custom Menu</ion-title>
+      </ion-toolbar>
+    </ion-header> -->
+    <ion-content>
+      <ion-list>
+        
+      </ion-list>
+    </ion-content>
+  </ion-menu-toggle>
+</ion-split-pane>
+  
+  <ion-router-outlet id="main"></ion-router-outlet>
+ 
