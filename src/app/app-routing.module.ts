@@ -18,13 +18,10 @@ const routes: Routes = [
   {
     path: 'time',
     loadChildren: () => import('./time/time.module').then( m => m.TimePageModule)
-  },  {
-    path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   },
   {
-    path: 'ser',
-    loadChildren: () => import('./ser/ser.module').then( m => m.SerPageModule)
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
   },
 
 
