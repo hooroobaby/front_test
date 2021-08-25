@@ -1,0 +1,68 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>report</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<head>
+  <style>
+    #container{
+      display:grid;
+      grid-template-columns: 40px 240px 50px;
+      grid-template-rows : 90px;
+      column-gap: 5px;
+    }
+
+  </style>
+</head>
+
+<ion-content>
+
+  <div style="background-color: #C3E4FA; height: 120px;" id="container">
+    <div style="text-align: left;">
+      <ion-icon style="color: #827E7E; font-size: 30px; position:absolute; top:18px; left: 5pt;" name="chevron-back-outline"></ion-icon>
+    </div>
+    <div>
+      <h1 style="color: #0D7FDB; font-size: 24px; font-family: Roboto; font-weight: 600;">
+        回報事故
+      </h1>
+    </div>
+    <div>
+      <ion-icon name="chatbox-outline" style="font-size: 90px; color: #0D7FDB; position:absolute; top:15px;"></ion-icon>
+    </div>
+  </div>
+
+    <ion-item style="width: 350px; position: absolute; top: 135px; left: 25px;">
+      <ion-label>事故類型</ion-label>
+      <ion-select placeholder="選擇事故類型" style="position: absolute; left: 180px;">
+        <ion-select-option value="car">車禍</ion-select-option>
+        <ion-select-option value="steal">偷竊</ion-select-option>
+        <ion-select-option value="else">其他</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item style="width: 350px; position: absolute; top: 190px; left: 25px;">
+      <ion-label>事故日期</ion-label>
+      <ion-datetime
+      displayFormat="YYYY-MM-DD"
+      [(ngModel)]="myDate"
+      style="width: 120px; position: absolute; left: 180px;">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item style="width: 350px; position: absolute; top: 245px; left: 25px;">
+      <ion-label>發生位置</ion-label>
+      <ion-input placeholder="縣市" style="width: 120px; position: absolute; left: 190px;"></ion-input>
+    </ion-item>
+    <ion-item style="width: 150px; position: absolute; top: 300px; left: 225px;">
+      <ion-input placeholder="行政區" ></ion-input>
+    </ion-item>
+    <ion-item style="width: 150px; position: absolute; top: 355px; left: 225px;">
+      <ion-input placeholder="地址" ></ion-input>
+    </ion-item>
+
+    <ion-button style="width: 100px; position: absolute; bottom: 20px; right: 20px;">
+      回報
+    </ion-button>
+
+</ion-content>

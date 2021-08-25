@@ -1,0 +1,88 @@
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>search_loc</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<head>
+  <style>
+    #container{
+      display:grid;
+      grid-template-columns: 40px 240px 50px;
+      grid-template-rows : 90px;
+      column-gap: 5px;
+    }
+
+  </style>
+</head>
+<body>
+<ion-content>
+
+  <div style="background-color: #C3E4FA; height: 120px;" id="container">
+    <div style="text-align: left;">
+      <ion-icon style="color: #827E7E; font-size: 30px; position:absolute; top:18px; left: 5pt;" name="chevron-back-outline"></ion-icon>
+    </div>
+    <div>
+      <h1 style="color: #0D7FDB; font-size: 24px; font-family: Roboto; font-weight: 600;">
+        定點査詢
+      </h1>
+    </div>
+    <div>
+      <ion-icon name="location-outline" style="font-size: 90px; color: #0D7FDB; position:absolute; top:15px;"></ion-icon>
+    </div>
+  </div>
+
+
+    <ion-segment
+    [(ngModel)]="sections.selectedSection"
+    (ionChange)="segmentChanged($event)">
+
+      <ion-segment-button value="{{sections.first}}">
+        <ion-label>地點</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="{{sections.second}}">
+        <ion-label>時間</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+
+  <div *ngIf="sections.selectedSection === 'first'">
+    <div style="text-align: center;">
+     <ion-searchbar placeholder="輸入地點" style="width: 350px; position: absolute; left: 25px; top: 190px;"></ion-searchbar>
+    </div>
+
+    <div  style="width: 350px; position: absolute; left: 25px; top: 250px;">
+      <ion-chip>
+        <ion-label id="favorite" (click)="fillin()"></ion-label>
+      </ion-chip>
+    </div>
+
+    <ion-button (click)="displayFavLoc()"
+                style="position: absolute; top: 350px;">
+    displayfavloc
+    </ion-button>
+
+    <div style="text-align: right; position: absolute; top: 610px; right: 20px;">
+      <ion-button (click)="nextstep()">下一步
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+
+  <div *ngIf="sections.selectedSection === 'second'">
+    <div style="text-align: center;">
+      <ion-item style="width: 350px; position: absolute; top: 190px; left: 25px;">
+        <ion-label>選擇欲查詢日期</ion-label>
+        <ion-datetime displayFormat="	YYYY-MM-DD" placeholder="日期" style="width: 120px;"></ion-datetime>
+      </ion-item>
+    </div>
+
+    <div style="text-align: right; position: absolute; top: 610px; right: 20px;">
+      <ion-button>搜尋</ion-button>
+    </div>
+  </div>
+
+</ion-content>
+</body>

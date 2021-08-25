@@ -1,0 +1,48 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>history</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<head>
+  <style>
+    #container{
+      display:grid;
+      grid-template-columns: 40px 240px 50px;
+      grid-template-rows : 90px;
+      column-gap: 5px;
+    }
+
+  </style>
+</head>
+
+<ion-content>
+
+  <div style="background-color: #C3E4FA; height: 120px;" id="container">
+    <div style="text-align: left;">
+      <ion-icon style="color: #827E7E; font-size: 30px; position:absolute; top:18px; left: 5pt;" name="chevron-back-outline"></ion-icon>
+    </div>
+    <div>
+      <h1 style="color: #0D7FDB; font-size: 24px; font-family: Roboto; font-weight: 600;">
+        歷史案件
+      </h1>
+    </div>
+    <div>
+      <ion-icon name="document-text-outline" style="font-size: 90px; color: #0D7FDB; position:absolute; top:15px;"></ion-icon>
+    </div>
+  </div>
+
+  <div class="card-background-page">
+    <ion-card>
+      <img src="assets/image/北投.jpg"/>
+      <div class="card-title">北投區</div>
+      <div class="card-subtitle">41 Listings</div>
+    </ion-card>
+
+    <ion-card>
+      <img src="assets/image/士林.jpg"/>
+      <div class="card-title">士林區</div>
+      <div class="card-subtitle">64 Listings</div>
+    </ion-card>
+  </div>
+
+</ion-content>

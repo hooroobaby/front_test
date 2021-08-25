@@ -1,0 +1,64 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>setting</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<head>
+  <style>
+    #container{
+      display:grid;
+      grid-template-columns: 40px 240px 50px;
+      grid-template-rows : 90px;
+      column-gap: 5px;
+    }
+
+  </style>
+</head>
+
+<ion-content>
+
+  <div style="background-color: #C3E4FA; height: 120px;" id="container">
+    <div style="text-align: left;">
+      <ion-icon style="color: #827E7E; font-size: 30px; position:absolute; top:18px; left: 5pt;" name="chevron-back-outline"></ion-icon>
+    </div>
+    <div>
+      <h1 style="color: #0D7FDB; font-size: 24px; font-family: Roboto; font-weight: 600;">
+        設定
+      </h1>
+    </div>
+    <div>
+      <ion-icon name="settings-outline" style="font-size: 90px; color: #0D7FDB; position:absolute; top:15px;"></ion-icon>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-radio-group value="biff">
+      <ion-list-header>
+        <ion-label style="font-size: 20px; font-weight: bold;">使用者模式</ion-label>
+      </ion-list-header>
+
+      <div style="text-align: center;">
+        <ion-item style="width: 365px;">
+          <ion-icon name="car-outline"></ion-icon>
+          <ion-label>汽車</ion-label>
+          <ion-radio slot="start" value="car"></ion-radio>
+        </ion-item>
+
+        <ion-item style="width: 365px;">
+          <ion-icon name="walk-outline"></ion-icon>
+          <ion-label>行人</ion-label>
+          <ion-radio slot="start" value="pedestrian"></ion-radio>
+        </ion-item>
+      </div>
+
+    </ion-radio-group>
+  </ion-list>
+
+
+    <ion-button style="width: 100px; position: absolute; bottom: 20px; right: 20px;">
+      確定
+    </ion-button>
+
+</ion-content>
+

@@ -1,0 +1,118 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>search_loc</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<head>
+  <style>
+    #container{
+      display:grid;
+      grid-template-columns: 40px 240px 50px;
+      grid-template-rows : 90px;
+      column-gap: 5px;
+    }
+
+  </style>
+
+</head>
+<body>
+<ion-content>
+
+  <div style="background-color: #C3E4FA; height: 120px;" id="container">
+    <div style="text-align: left;">
+      <ion-icon style="color: #827E7E; font-size: 30px; position:absolute; top:18px; left: 5pt;" name="chevron-back-outline"></ion-icon>
+    </div>
+    <div>
+      <h1 style="color: #0D7FDB; font-size: 24px; font-family: Roboto; font-weight: 600;">
+        定點査詢
+      </h1>
+    </div>
+    <div>
+      <ion-icon name="location-outline" style="font-size: 90px; color: #0D7FDB; position:absolute; top:15px;"></ion-icon>
+    </div>
+  </div>
+
+
+    <ion-segment
+    [(ngModel)]="sections.selectedSection"
+    (ionChange)="segmentChanged($event)">
+
+      <ion-segment-button value="{{sections.location}}">
+        <ion-label>地點</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button value="{{sections.time}}">
+        <ion-label>時間</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+
+  <div *ngIf="sections.selectedSection === 'location'">
+    <div style="text-align: center;">
+     <ion-searchbar
+     [(ngModel)]="FavValue"
+     placeholder="輸入地點"
+     style="width: 350px; position: absolute; left: 25px; top: 190px;">
+    </ion-searchbar>
+    </div>
+
+    <div id="favorite" style="width: 350px; position: absolute; left: 25px; top: 250px;">
+      <ion-chip *ngFor="let fav of favList"
+                (click)="fillin(fav.location)"
+                color="primary">
+        <ion-label>{{fav.location}}</ion-label>
+      </ion-chip>
+    </div>
+
+    <div style="text-align: right; position: absolute; top: 610px; right: 20px;">
+      <ion-button (click)="nextstep()">下一步
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div *ngIf="sections.selectedSection === 'time'">
+    <div style="text-align: center;">
+
+      <ion-item style="width: 350px; position: absolute; top: 190px; left: 25px;">
+        <ion-label>
+          不限日期
+        </ion-label>
+        <ion-toggle (ionChange)="withoutdate($event)">
+        </ion-toggle>
+      </ion-item>
+
+      <ion-item style="width: 350px; position: absolute; top: 240px; left: 25px;">
+        <ion-label>選擇欲查詢日期</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DD"
+                      placeholder="日期"
+                      style="width: 120px;"
+                      [(ngModel)]="myDate"
+                      disabled={{datedisabled}}>
+        </ion-datetime>
+      </ion-item>
+
+      <ion-item style="width: 350px; position: absolute; top: 290px; left: 25px;">
+        <ion-label>選擇時段</ion-label>
+        <ion-select [(ngModel)]="period" placeholder="時段" style="position: absolute; left: 200px;">
+          <ion-select-option value="0">清晨：06-10</ion-select-option>
+          <ion-select-option value="1">早晨：10-14</ion-select-option>
+          <ion-select-option value="2">中午：14-17</ion-select-option>
+          <ion-select-option value="3">下午：17-20</ion-select-option>
+          <ion-select-option value="4">傍晚：20-00</ion-select-option>
+          <ion-select-option value="5">夜晚：00-04</ion-select-option>
+          <ion-select-option value="6">深夜：04-06</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div style="text-align: right; position: absolute; top: 610px; right: 20px;">
+      <ion-button (click)="search($event)">
+      搜尋
+      </ion-button>
+    </div>
+  </div>
+
+</ion-content>
+</body>
