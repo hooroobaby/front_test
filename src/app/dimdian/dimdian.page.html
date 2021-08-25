@@ -1,58 +1,4 @@
 <ion-header>
-
-  <style>
-    .ion-button{
-      color: #0D7FDB;
-    }
-
-    .d0{
-      padding: 20px; 
-      padding-left: 5%;
-      padding-right: 5%;
-      text-align: center;
-      margin: 15px;
-      border-width: 4px; 
-      border-style: solid; 
-      border-color: #0D7FDB;
-      border-radius: 20px;
-      text-align: center;
-      width: 90%;
-    }
-
-    .d1{
-      position:relative;
-      bottom:0%;
-      text-align:center;
-      margin: 30px; 
-      border: 5px;
-    }
-
-    .rate{
-      color: black;
-      font-size: larger; 
-      padding-left: 10%;
-    }
-
-    .date{
-      color: gray; 
-      font-size: small; 
-      padding-left: 10%;
-    }
-
-    .output{
-      color: #0D7FDB;
-      padding-left: 30%;
-      font-size: 65px;
-    }
-    
-    .fab[mini] {
-      margin: 8px;
-      width: 50px;
-      height: 50px;
-      color: #0D7FDB;
-    }
-  </style>
-
   <ion-toolbar>
     <ion-title>dimdian</ion-title>
   </ion-toolbar>
@@ -60,88 +6,147 @@
 
 <ion-content>
 
-    <div class="d0" >
-      <ion-text color="dark" style="font-size: 40px;">
-        <strong>中央大學</strong>
-      </ion-text><br>
-      <ion-text id="address" color="dark" style="font-size: 20px;">
-        <strong>桃園市中壢區中大路300號</strong></ion-text>
+  <!-- <div style="background-color: #C3E4FA; height: 120px;" id="container">
+    <div style="text-align: left;">
+      <ion-icon style="color: #827E7E; font-size: 30px; position:absolute; top:18px; left: 5pt;" name="chevron-back-outline"></ion-icon>
     </div>
-  
+    <div>
+      <h1 style="color: #0D7FDB; font-size: 24px; font-family: Roboto; font-weight: 600;">
+        定點査詢
+      </h1>
+    </div>
+    <div>
+      <ion-icon name="location-outline" style="font-size: 90px; color: #0D7FDB; position:absolute; top:15px;"></ion-icon>
+    </div>
+  </div> -->
+
+  <div class="d0">
+    <ion-text color="dark" style="font-size: 40px;">
+      <strong>{{this.landmark}}</strong>
+    </ion-text><br>
+    <ion-text id="address" color="dark" style="font-size: 20px;">
+      <strong>{{this.address0}}</strong></ion-text>
+  </div>
+
+  <!-- 車禍事故發生率 -->
   <div>
     <div>
-      <ion-text class="rate"><strong>暴力案件發生率</strong></ion-text><br>
-      <!-- 到時候看使用者輸入什麼日期 若沒有指定則預設當天 -->
-      <ion-text class="date">2021.3.17</ion-text>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="10">
+            <ion-text class="rate"><strong>車禍事故安全級數</strong></ion-text><br>
+            <!-- 之後要放紅配貨品然傳給我的時間 -->
+            <ion-text id="whatsday">{{this.day}}</ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button fill="clear" size="smaller" (click)=open2IMG() style="position:absolute; top: 0%; ">
+              <ion-icon name="chevron-down-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+    </div>
+    <div>
+      <ion-grid>
+        <ion-row>
+          <!-- <ion-col size="1"> </ion-col> -->
+          <ion-col size="12">
+            <img id="img1" src="assets\icon\1.png" alt="壞壞" style="display: none;" />
+            <img id="img2" src="assets\icon\2.png" alt="壞壞" style="display: none;" />
+            <img id="img3" src="assets\icon\3.png" alt="壞壞" style="display: none;" />
+            <!-- <ion-text class="output">{{this.car}} </ion-text> -->
+            <!-- <ion-text style="color: gray;font-size: 35px;"> 級</ion-text> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div>
+      <canvas id="oImg2" baseChart [datasets]="chartData1" [labels]="chartLabel" [chartType]="chartType"
+        [colors]="chartColors" [legend]="showLegend" [options]="chartOptions1"  style="padding-left: 5px;"></canvas>
+    </div>
+    
+  <div style="text-align: center; margin: 20px; width: 90%;">
+    <!-- 如果有危險：顯示 -->
+    <ion-chip class="cara" color="primary" style="width: 90%;height: 48px; ">
+      <ion-avatar>
+        <ion-icon class="cara" name="alert-circle-outline" style="width: 24px;height: 24px;"></ion-icon>
+      </ion-avatar>
+      <!-- 若車禍或暴力案件有超過一定機率時顯示 -->
+      <ion-label class="cara" id="carac" class=".ion-button">{{this.cartext}} </ion-label>
+    </ion-chip>
+  </div>
+
+  </div>
+
+  <br>
+  <!-- 居住安全發生率 -->
+  <div>
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="10">
+            <ion-text class="rate"><strong>居住安全級數</strong></ion-text><br>
+            <!-- 之後要放紅配貨品然傳給我的時間 -->
+            <ion-text id="whatsday">{{this.day}}</ion-text>
+          </ion-col>
+          <ion-col size="2">
+            <ion-button fill="clear" size="smaller" (click)=openIMG() style="position:absolute; top: 0%; ">
+              <ion-icon name="chevron-down-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
     </div>
     <div>
       <!-- 到時候回傳的機率 -->
       <ion-grid>
         <ion-row>
-          <ion-col size="10">
-            <ion-text class="output">40.0</ion-text>
-            <ion-text style="color: gray;font-size: 35px;"> %</ion-text>
-          </ion-col>
-          <ion-col size="2">
-            <ion-button fill="clear" size="smaller" (click)=openIMG()>
-              <ion-icon name="chevron-down-circle-outline"></ion-icon>
-            </ion-button>
+          <!-- <ion-col size="1"> </ion-col> -->
+          <ion-col size="12">
+            <img id="img11" src="assets\icon\1.png" alt="壞壞" style="display: none;" />
+            <img id="img12" src="assets\icon\2.png" alt="壞壞" style="display: none;" />
+            <img id="img13" src="assets\icon\3.png" alt="壞壞" style="display: none;" />
           </ion-col>
         </ion-row>
       </ion-grid>
     </div>
-    <div>
-      <!-- 到時候圖片要怎麼生成？ -->
-      <img src="http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/207da8676e1927fadf1ee3b14603c088.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100,g_se,x_0,y_0" 
-                 id="oImg" width="90%" hight="160px"  style="display:none; padding-left: 15%;" >
+    <div id='chart' style="padding-left: 5px;">
+      <!-- 數據折線圖 -->
+      <canvas id="oImg" baseChart [datasets]="chartData" [labels]="chartLabel" [chartType]="chartType"
+        [colors]="chartColors" [legend]="showLegend" [options]="chartOptions"  style="padding-left: 5px;"></canvas>
     </div>
-  </div>
-  <br>
-  <div>
-    <div>
-      <ion-text class="rate"><strong>車禍事故發生率</strong></ion-text><br>
-      <ion-text class="date">2021.3.17</ion-text>
-    </div>
-    <div>
-      <ion-grid>
-        <ion-row>
-          <ion-col size="10">
-            <ion-text class="output">53.5</ion-text>
-            <ion-text style="color: gray;font-size: 35px;"> %</ion-text>
-          </ion-col>
-          <ion-col size="2">
-            <ion-button fill="clear" size="smaller" (click)=open2IMG() style="padding-top: 20px;">
-              <ion-icon name="chevron-down-circle-outline"></ion-icon>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </div>
-    <div>
-      <img src="http://aliyunzixunbucket.oss-cn-beijing.aliyuncs.com/jpg/207da8676e1927fadf1ee3b14603c088.jpg?x-oss-process=image/resize,p_100/auto-orient,1/quality,q_90/format,jpg/watermark,image_eXVuY2VzaGk=,t_100,g_se,x_0,y_0" 
-                 id="oImg2" width="90%" hight="160px"  style="display:none; padding-left: 15%;" >
+    
+    <div style="text-align: center; margin: 20px; width: 90%;">
+      <ion-chip class="livea" color="primary" style="width: 90%;height: 48px; ">
+        <ion-avatar>
+          <ion-icon class="livea" name="alert-circle-outline" style="width: 24px;height: 24px;"></ion-icon>
+        </ion-avatar>
+        <ion-label class="livea" id="liveac" class=".ion-button">{{this.livetext}} </ion-label>
+      </ion-chip>
     </div>
   </div>
 
-  <div style="text-align: center; margin: 20px; width: 90%;">
+
+  <div id='history' style="text-align: center; margin: 20px; width: 90%; display: none;">
     <!-- 如果有危險：顯示 -->
-    <ion-chip color="primary" style="width: 90%;height: 48px;">
-      <ion-avatar >
-        <ion-icon name="alert-circle-outline" style="width: 24px;height: 24px;"></ion-icon>
+    <ion-chip color="danger" style="width: 90%;height: 48px;">
+      <ion-avatar>
+        <ion-icon name="alert-circle-outline" style="width: 24px;height: 24px; color: red"></ion-icon>
       </ion-avatar>
-      <!-- 若車禍或暴力案件有超過一定機率時顯示 -->
-      <ion-label  class=".ion-button" color="primary" >此地點車禍機率高</ion-label>
-
+      <!-- 若歷史事件顯示出此地點事故頻繁 -->
+      <ion-label class=".ion-button" color="danger" style="color: red;">此地點歷史事故頻繁</ion-label>
     </ion-chip>
   </div>
-  
-  
 
-  <div class="d1" >
+
+
+  <div class="d1">
     <ion-grid>
       <ion-row>
         <ion-col size="6" size-lg>
-          <ion-button class="ion-button"  href="#" shape="round" style="padding-left: 6%;">
+          <ion-button class="ion-button" href="#" shape="round" style="padding-left: 6%;">
             <ion-icon name="chatbox-outline" style="color: #C3E4FA; width: 24px; height: 48px; "></ion-icon>
             <p style="color:#C3E4FA; padding-left:8px;"><strong>回報事故</strong></p>
           </ion-button>
@@ -155,6 +160,9 @@
       </ion-row>
     </ion-grid>
   </div>
-  
+
+  <!-- <div>
+    <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [chartType]="chartType"></canvas>
+  </div> -->
 
 </ion-content>

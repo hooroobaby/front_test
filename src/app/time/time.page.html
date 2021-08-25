@@ -2,64 +2,16 @@
   <ion-toolbar>
     <ion-title>time</ion-title>
   </ion-toolbar>
-
-  <style>
-    .d1{
-      position: absolute;
-      bottom:0%;
-    }
-
-    #container {
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      white-space: nowrap;
-      border: 3px gainsboro;
-    }
-    /* div { */
-				/* float: left;
-				border: 1px solid red; */
-        /* display: inline; */
-      /* } */
-
-    .icon{
-      -moz-transform:rotate(-90deg);
-      -webkit-transform:rotate(-90deg);
-      width: 45px; height: 45px;
-      color: gray;
-      padding: 4px;
-      text-align: center;
-    }
-
-    .font{
-      text-align: center;
-      color: gray;
-      font-size: smaller;
-      vertical-align: inherit;
-      padding: 12px;
-      width: 45px; height: 45px;
-    }
-
-    .choose{
-      color: #0D7FDB;
-    }
-
-  </style>
 </ion-header>
 
 <ion-content>
-          <div  style="position: absolute;bottom:20%; left: 10px; " >
+          <div  style="position: relative;bottom:25%; left: 10px; " >
             <ion-icon name="time-outline" style="width: 28px; height: 28px; color:#0D7FDB"></ion-icon>
           </div>
           <div  style="position: absolute; bottom:15%; left: 40%; width: auto;  display: inline; vertical-align: inherit;">
-            <ion-chip color="primary" style="width: auto;  color: #0D7FDB;">星期日</ion-chip>
+            <ion-chip id="dayweek" color="primary" style="width: auto;  color: #0D7FDB;">{{this.week}}</ion-chip>
           </div>
-          <swiper #newSwiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange($event)" style=" height: 15%; position: absolute; bottom:0%; ">
-            <!-- <div ng-reflect-ng-class="swiper-wrapper " id="momo" class="swiper-wrapper" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);"> -->
-
-              <!-- <div slot="wrapper-start" style="width: auto; height: 60px; display: inline; vertical-align: inherit;">
-                <ion-chip color="primary" style="width: 18%;height: 20px; left: 40%;  color: #0D7FDB;">星期日</ion-chip>
-              </div>  -->
+          <swiper #newSwiper (swiper)="onSwiper($event)" (slideChange)="onSlideChange($event)" style=" height: 15%; position: absolute; bottom:0%; width: 100%; ">
               <div slot="wrapper-start">
                 <ion-icon class="icon" id="icon1" name="remove-outline"></ion-icon>
                 <ion-icon class="icon" id="icon2" name="remove-outline"></ion-icon>
@@ -69,14 +21,16 @@
                 <ion-icon class="icon" id="icon6" name="remove-outline"></ion-icon>
                 <ion-icon class="icon" id="icon7" name="remove-outline"></ion-icon>
               </div>
+              <!-- <div slot="wrapper-end" *ngFor="let item of days; let i = index"> -->
               <div slot="wrapper-end">
-                <ion-text class="font" id="font1"> 6/12 </ion-text>
-                <ion-text class="font" id="font2"> 6/13 </ion-text>
-                <ion-text class="font" id="font3"> 6/14 </ion-text>
-                <ion-text class="font" id="font4"> 6/15 </ion-text>
-                <ion-text class="font" id="font5"> 6/16 </ion-text>
-                <ion-text class="font" id="font6"> 6/17 </ion-text>
-                <ion-text class="font" id="font7"> 6/18 </ion-text>
+                <!-- <ion-text class="font" id="font1"> {{this.days[i]}} </ion-text> -->
+                <ion-text class="font" id="font1"> {{this.hours[0]}} </ion-text>
+                <ion-text class="font" id="font2"> {{this.hours[1]}} </ion-text>
+                <ion-text class="font" id="font3"> {{this.hours[2]}} </ion-text>
+                <ion-text class="font" id="font4"> {{this.hours[3]}} </ion-text>
+                <ion-text class="font" id="font5"> {{this.hours[4]}} </ion-text>
+                <ion-text class="font" id="font6"> {{this.hours[5]}} </ion-text>
+                <ion-text class="font" id="font7"> {{this.hours[6]}} </ion-text> 
               </div>
           </swiper>
 
