@@ -12,6 +12,7 @@ import * as $ from 'jquery';
 import { WeekDay } from '@angular/common';
 import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
+import { setgid } from 'process';
 
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
@@ -30,7 +31,7 @@ export class TimePage implements OnInit {
   // year: number = this.Today.getFullYear();
   // month: number = this.Today.getMonth() + 1;
   // day: number = this.Today.getDate();
-  // d: number = this.Today.getDay(); //星期幾數字
+  d: number = new Date().getDay(); //星期幾數字
   week: string; //星期幾中文
   hour: number = new Date().getHours();
   days = [];
@@ -38,57 +39,43 @@ export class TimePage implements OnInit {
   hours =['04-06','06-10','10-14','14-17','17-20','20-00','00-04'];
   // i: number;
   // num: number = -3;
+  x: number;
+  y: number;
+  radius: number;
+  level: number;
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
     this.showDay();
-    this.getHTTP();
   }
 
-  getHTTP(){
-    const url = 'http://localhost:8100';
-    this.http.get(url, {observe: 'response', responseType: 'text'}).subscribe((res) => {
-    console.log(res);
+  getHTTP(seg){
+    const url = 'http://localhost:5000/getMapDatawithtime/'+this.d+'/'+seg;
+    this.http.get(url, {observe: 'response'})
+    .subscribe((result) => {
+      // const data = result.return;
+      // const x = data.X;
+      // const y = data.Y;
+      // const level = data.heatmap_level;
+      // const A1 = data.including_A1;
+      // console.log(data);
   });
+  console.log(url);
   }
 
   showDay() {
     const hour = this.hour;
     const nows=this.nows;
     console.log(hour);
-    if(4<=hour && hour<6){this.week='清晨'; nows[0]=true;}
-    else if(6<=hour && hour<10){this.week='早晨'; nows[1]=true;}
-    else if(10<=hour && hour<14){this.week='中午'; nows[2]=true;}
-    else if(14<=hour && hour<17){this.week='下午'; nows[3]=true;}
-    else if(17<=hour && hour<20){this.week='傍晚'; nows[4]=true;}
-    else if(20<=hour && hour<24){this.week='夜晚'; nows[5]=true;}
-    else if(0<=hour && hour<4){this.week='深夜'; nows[6]=true;}
-    // 正中間為當天日期
-    // for (this.i = this.num; this.i <= 3; this.i++) {
-    //   this.days.push(this.month + "/" + (this.day + this.i));
-    // }
-    // console.log(this.d)
-
-    // let nod = [1,2,3,4,5,6,7]
-    // let dow = ['清晨','早晨','中午','下午','傍晚','夜晚','深夜'];
-
-    // for (let i = 0; i < nod.length; i++) {
-    //   // const element = array[index];
-    //   switch(this.d){
-    //     case nod[i]:{
-    //       this.week=dow[i];
-    //       break;
-    //     }
-    //   }
-    // }
-    // const days = [this.i - 3, this.i - 2, this.i - 1, this.i, this.i + 1, this.i + 2, this.i + 3];
-    // const date = [];
-    // days.forEach(function(day){
-    //   date.push((new Date().getMonth() + 1) + "/" + day);
-    // });
-    // console.log(date[0])
+    if(4<=hour && hour<6){this.week='清晨'; nows[0]=true; this.getHTTP(0);}
+    else if(6<=hour && hour<10){this.week='早晨'; nows[1]=true; this.getHTTP(1);}
+    else if(10<=hour && hour<14){this.week='中午'; nows[2]=true; this.getHTTP(2);}
+    else if(14<=hour && hour<17){this.week='下午'; nows[3]=true; this.getHTTP(3);}
+    else if(17<=hour && hour<20){this.week='傍晚'; nows[4]=true; this.getHTTP(4);}
+    else if(20<=hour && hour<24){this.week='夜晚'; nows[5]=true; this.getHTTP(5);}
+    else if(0<=hour && hour<4){this.week='深夜'; nows[6]=true; this.getHTTP(6);}
   }
   onSwiper(swiper) {
     if(this.nows[0]){swiper.$wrapperEl[0].attributes[4].value = 'transition-duration: 300ms; transform: translate3d(40.2%, 0px, 0px);';}
@@ -154,7 +141,7 @@ export class TimePage implements OnInit {
       // var choose = this.year+"-"+this.month + "-" + (this.day-3)
       // chooseDay(choose);
       ww.innerHTML=dow[0];
-
+      this.getHTTP(0);
       // --------------------------------------------------------------------------------------- //
       // const body = JSON.stringify(this.hours[0]);
       // const url = 'http://localhost:8100';
@@ -170,6 +157,7 @@ export class TimePage implements OnInit {
       // var choose = this.year+"-"+this.month + "-" + (this.day-2)
       // chooseDay(choose);
       ww.innerHTML=dow[1];
+      this.getHTTP(1);
     }
     // 中午3
     else if ((0.0625 * width < match && match < 0.21 * width)) {
@@ -179,6 +167,7 @@ export class TimePage implements OnInit {
       // var choose = this.year+"-"+this.month + "-" + (this.day-1)
       // chooseDay(choose);
       ww.innerHTML=dow[2];
+      this.getHTTP(2);
     }
     // 下午4
     else if (-0.08 * width < match && match < 0.085 * width) {
@@ -188,6 +177,7 @@ export class TimePage implements OnInit {
       // var choose = this.year+"-"+this.month + "-" + (this.day)
       // chooseDay(choose);
       ww.innerHTML=dow[3];
+      this.getHTTP(3);
     }
     // 傍晚5
     else if (-0.219 * width < match && match < -0.055 * width) {
@@ -197,6 +187,7 @@ export class TimePage implements OnInit {
       // var choose = this.year+"-"+this.month + "-" + (this.day+1)
       // chooseDay(choose);
       ww.innerHTML=dow[4];
+      this.getHTTP(4);
     }
     // 晚上6
     else if (-0.35 * width < match && match < -0.197 * width) {
@@ -206,6 +197,7 @@ export class TimePage implements OnInit {
       // var choose = this.year+"-"+this.month + "-" + (this.day+2)
       // chooseDay(choose);
       ww.innerHTML=dow[5];
+      this.getHTTP(5);
     }
     // 深夜7
     else if (-0.498 * width < match && match < -0.345 * width) {
@@ -215,6 +207,7 @@ export class TimePage implements OnInit {
       // var choose = this.year+"-"+this.month + "-" + (this.day+3)
       // chooseDay(choose);
       ww.innerHTML=dow[6];
+      this.getHTTP(6);
     }
 
     return match;
