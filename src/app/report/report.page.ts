@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-report',
@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./report.page.scss'],
 })
 export class ReportPage implements OnInit {
-
   myDate: string = new Date().toISOString();
 
   constructor() { }

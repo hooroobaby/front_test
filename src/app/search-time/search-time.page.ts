@@ -28,6 +28,8 @@ export class SearchTimePage implements OnInit {
 
   outputdata: string;
 
+  // myVar: number = 12; //test_
+
   // Data: [latitude: string, longitude: string, withdate: Boolean, week: string, period: string];
 
   constructor(private http: HttpClient) {
@@ -92,7 +94,7 @@ export class SearchTimePage implements OnInit {
 
   toweekday(input: string){
     const thedate = new Date(input);
-    const theweekday  = thedate.getDay();
+    const theweekday  = thedate.getDay() + 1;
     return theweekday;
   }
 
